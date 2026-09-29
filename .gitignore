@@ -1,0 +1,24 @@
+## .gitignore
+/bge
+/codebert
+/codeT5
+/dataset
+/produce
+thread*
+/__pycache__
+
+# 环境变量（包含 API 密钥，切勿提交）
+.env
+
+# 编辑器/工具数据
+.codebuddy/
+.vscode/
+*.code-workspace
+
+# 模型输出 / 结果 / 日志 / 缓存
+/outputs
+/results
+*.log
+*.pyc
+.DS_Store
+.ipynb_checkpoints
