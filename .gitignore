@@ -2,7 +2,6 @@
 /bge
 /codebert
 /codeT5
-/dataset
 /produce
 thread*
 /__pycache__
@@ -22,3 +21,7 @@ thread*
 *.pyc
 .DS_Store
 .ipynb_checkpoints
+
+# 超过 GitHub 100MB 限制的大文件（原始数据 / 可重新生成）
+dataset/mergebert/json_js/JSAllConflicts.json
+dataset/mergebert/javaContextPrettyVersionAll2.json
