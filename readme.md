@@ -245,6 +245,44 @@ export MILVUS_TOKEN="..."
 
 ---
 
+## 实验参数配置
+
+### 大语言模型生成参数
+
+| 模型 | 调用入口 | temperature | max_tokens |
+| --- | --- | --- | --- |
+| `gpt-3.5-turbo` | `openai_api.gpt_35` | 0.01 | 4096 |
+| `gpt-4o` | `openai_api.gpt_4o` | 0.01 | 4096 |
+| `deepseek-v4-pro` | `deepseek_api.deepSeek` | 1.99 | 4096 |
+| `qwen-turbo` | `alibaba_api.qwen` | 1.90 | 4096 |
+
+> temperature 取值区间为 0~2，越大越随机、越小越确定。
+
+### 检索与重排序参数
+
+| 检索变体 | 稀疏通道 | 稠密通道 | 重排序方式 | 编码模型 |
+| --- | --- | --- | --- | --- |
+| T5-BM25-L2 | BM25 | CodeT5 + L2 | RRF | CodeT5 |
+| T5-BM25-L2（阈值过滤） | BM25 | CodeT5 + L2 | RRF + 质量阈值过滤 | CodeT5 |
+| T5-BM25-L2（仅稠密） | — | CodeT5 + L2 | WeightedRanker(1) | CodeT5 |
+| T5-IP-COSINE | BM25（IP） | CodeT5 + COSINE | WeightedRanker(0.2, 0.8) | CodeT5 |
+| T5-IP-COSINE（仅稠密） | — | CodeT5 + COSINE | WeightedRanker(0, 1) | CodeT5 |
+| T5-IP-COSINE（仅稀疏） | BM25（IP） | — | WeightedRanker(1, 0) | CodeT5 |
+| CB-IP-COSINE | BM25（IP） | CodeBERT + COSINE | WeightedRanker(0, 1) | CodeBERT |
+
+其他关键参数：
+
+- 稠密向量维度：**768**（CodeT5 / CodeBERT 隐层维度）
+- 检索返回条数 `limit`：由各实验设定（top-k 通常为 1~6）
+- 时间上界过滤 `current_ts`：数值时间戳或 ISO 8601 字符串
+- 质量阈值过滤（`database_api_T5_BM25_L2_threshold.py`）：
+  - `enable_threshold`：是否启用（默认 False）
+  - `bm25_threshold`：BM25 最低分值（默认 0.0）
+  - `l2_threshold`：L2 最大距离（默认 ∞）
+  - `rrf_threshold`：RRF 融合分值最低阈值（默认 0.0）
+
+---
+
 ## 安全与密钥管理
 
 - 所有 API 密钥、数据库令牌（token）均**不得硬编码**在源码中，必须通过环境变量注入，参考 `.env.example`。
