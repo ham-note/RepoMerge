@@ -251,10 +251,10 @@ export MILVUS_TOKEN="..."
 
 | 模型 | 调用入口 | temperature | max_tokens |
 | --- | --- | --- | --- |
-| `gpt-3.5-turbo` | `openai_api.gpt_35` | 0.01 | 4096 |
-| `gpt-4o` | `openai_api.gpt_4o` | 0.01 | 4096 |
+| `gpt-3.5-turbo` | `openai_api.gpt_35` | 1.99 | 4096 |
+| `gpt-4o` | `openai_api.gpt_4o` | 1.99 | 4096 |
 | `deepseek-v4-pro` | `deepseek_api.deepSeek` | 1.99 | 4096 |
-| `qwen-turbo` | `alibaba_api.qwen` | 1.90 | 4096 |
+| `qwen-turbo` | `alibaba_api.qwen` | 1.99 | 4096 |
 
 > temperature 取值区间为 0~2，越大越随机、越小越确定。
 

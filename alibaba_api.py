@@ -30,7 +30,7 @@ def qwen(question, number, truth):
                 }
             ], 
             max_tokens = 4096, # This model's maximum context length is 4097 tokens.
-            temperature = 1.90, # 0-2之间，越大越随机，越小越确定 0.01
+            temperature = 1.99, # 0-2之间，越大越随机，越小越确定 0.01
         )
         
         current_response = response.choices[0].message.content
