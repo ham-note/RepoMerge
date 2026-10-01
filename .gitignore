@@ -10,6 +10,7 @@ thread*
 .env
 
 # 编辑器/工具数据
+.venv/
 .codebuddy/
 .vscode/
 *.code-workspace
@@ -25,3 +26,12 @@ thread*
 # 超过 GitHub 100MB 限制的大文件（原始数据 / 可重新生成）
 dataset/mergebert/json_js/JSAllConflicts.json
 dataset/mergebert/javaContextPrettyVersionAll2.json
+
+# Java quick reproduction generated artifacts
+/reproduction-output/
+/reproduction/java/models/
+/reproduction/java/data/
+/reproduction/java/embeddings/
+/reproduction/java/milvus/
+/reproduction/java/results/
+/reproduction/java/run_manifest.json
