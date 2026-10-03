@@ -196,6 +196,31 @@ export DEEPSEEK_BASE_URL="https://api.deepseek.com"
 
 The smoke test is only a pipeline check. It should not be reported as a paper-level effectiveness result unless the model, endpoint, decoding parameters, sample selection, retry policy, and evaluation protocol are fixed for the full experiment.
 
+
+## R1-A28 Manual Exact-Agreement Failure Audit
+
+The repository also includes a manual audit artifact for reviewer comment R1-A28 under `reproduction/java/manual_audit/r1_a28/`. The audit samples 100 exact-agreement failed cases using repository-stratified proportional random sampling with fixed seed `20261003`, then compares each top-1 prediction against the developer resolution and original three-way conflict context.
+
+Summary of the 100-case audit:
+
+| Category | Count | Percentage |
+| --- | ---: | ---: |
+| Semantically equivalent: formatting/comments | 16 | 16.0% |
+| Semantically equivalent: renaming/syntax/API-equivalent | 7 | 7.0% |
+| Plausible but incomplete | 3 | 3.0% |
+| Truly incorrect | 65 | 65.0% |
+| Benchmark noise / tangled conflict fragment | 9 | 9.0% |
+
+Thus, 23/100 sampled exact-agreement failures are labeled as semantically equivalent false negatives of exact agreement. Benchmark-noise/tangled-fragment cases are reported separately and are not counted as model-correct.
+
+Files:
+
+```text
+reproduction/java/manual_audit/r1_a28/README.md
+reproduction/java/manual_audit/r1_a28/sample_100_labeled.json
+reproduction/java/manual_audit/r1_a28/summary.json
+```
+
 ## Optional Zilliz Cloud / Remote Milvus
 
 The original notebooks and `database_api_*.py` modules can be used with Zilliz Cloud or a remote Milvus deployment. Keep credentials outside source code:

@@ -1,0 +1,68 @@
+{
+  "sample_size": 100,
+  "label_counts": {
+    "INCORRECT": 65,
+    "EQUIV_FORMAT_COMMENT": 16,
+    "BENCHMARK_NOISE_OR_TANGLED": 9,
+    "EQUIV_RENAME_OR_SYNTAX": 7,
+    "PLAUSIBLE_INCOMPLETE": 3
+  },
+  "semantically_equivalent_count": 23,
+  "semantically_equivalent_rate": 0.23,
+  "partial_correct_count": 3,
+  "partial_correct_rate": 0.03,
+  "benchmark_noise_or_tangled_count": 9,
+  "benchmark_noise_or_tangled_rate": 0.09,
+  "truly_incorrect_count": 65,
+  "truly_incorrect_rate": 0.65,
+  "by_repository": {
+    "Galacticraft": {
+      "INCORRECT": 7,
+      "EQUIV_RENAME_OR_SYNTAX": 1,
+      "EQUIV_FORMAT_COMMENT": 1
+    },
+    "SOS": {
+      "INCORRECT": 6,
+      "EQUIV_FORMAT_COMMENT": 10
+    },
+    "autopsy": {
+      "EQUIV_FORMAT_COMMENT": 2,
+      "INCORRECT": 5,
+      "EQUIV_RENAME_OR_SYNTAX": 1
+    },
+    "autorest": {
+      "PLAUSIBLE_INCOMPLETE": 2
+    },
+    "azure-sdk-for-java": {
+      "PLAUSIBLE_INCOMPLETE": 1,
+      "INCORRECT": 8,
+      "BENCHMARK_NOISE_OR_TANGLED": 1,
+      "EQUIV_RENAME_OR_SYNTAX": 2
+    },
+    "cloudstack": {
+      "INCORRECT": 2,
+      "EQUIV_FORMAT_COMMENT": 1,
+      "BENCHMARK_NOISE_OR_TANGLED": 1
+    },
+    "molgenis": {
+      "INCORRECT": 9
+    },
+    "orientdb": {
+      "BENCHMARK_NOISE_OR_TANGLED": 5,
+      "INCORRECT": 1
+    },
+    "rumble": {
+      "INCORRECT": 19
+    },
+    "sis": {
+      "INCORRECT": 6
+    },
+    "spring-boot": {
+      "EQUIV_RENAME_OR_SYNTAX": 3,
+      "INCORRECT": 2,
+      "BENCHMARK_NOISE_OR_TANGLED": 2,
+      "EQUIV_FORMAT_COMMENT": 2
+    }
+  },
+  "interpretation_note": "Semantic-equivalent cases are exact-match false negatives. Benchmark-noise/tangled-fragment cases are reported separately and not counted as model-correct."
+}
