@@ -7,7 +7,7 @@ RepoMerge resolves repository-level merge conflicts by retrieving similar histor
 ```text
 checked-in MergeBERT data
   -> repository-level train/test split
-  -> CodeT5 / CodeBERT dense embeddings
+  -> CodeT5 dense embeddings
   -> BM25 sparse index + dense vector index in Milvus
   -> hybrid retrieval and rank fusion
   -> prompt construction
@@ -27,19 +27,11 @@ RepoMerge/
 ├── openai_api.py
 ├── deepseek_api.py
 ├── alibaba_api.py
-├── database_api_T5_BM25_L2.py
-├── database_api_T5_BM25_L2_threshold.py
-├── database_api_T5_BM25_L2_dense_only.py
-├── database_api_T5_IP_COSINE.py
-├── database_api_T5_IP_COSINE_dense_only.py
-├── database_api_T5_IP_COSINE_sparse_only.py
-├── database_api_CB_IP_COSINE.py
 ├── data-process.ipynb
 ├── vector-database-T5-BM25-L2.ipynb
 ├── vector-database-T5-IP-COSINE.ipynb
 ├── vector-database-CB-IP-COSINE.ipynb
 ├── reranker.ipynb
-├── reranker_all.ipynb
 ├── dataset/
 │   └── mergebert/
 │       ├── json/          # Java *_time.json files
@@ -56,7 +48,7 @@ RepoMerge/
         └── run_deepseek_sample.py
 ```
 
-The older notebooks may mention generated folders such as `dataset_all/`, `dataset_split/`, `dataset_rerank/`, or paths under `dataset/after/`. Those folders are not present in the current repository. The Java quick reproduction below reconstructs the needed 80/20 split directly from the committed files under `dataset/mergebert/json/` and `dataset/mergebert/vector/`.
+The unified reranking notebook reads committed records from `dataset/mergebert/json/` and writes generated results under the ignored `dataset_rerank/outputs/` directory. It does not depend on the removed legacy `dataset/after/` or `dataset_split/` paths.
 
 ## Environment
 
@@ -209,28 +201,26 @@ Do not hard-code endpoint or token values in notebooks before committing. Prefer
 
 ## Notebook Workflow
 
-The historical full workflow is organized as notebooks:
+The current notebook workflow is intentionally consolidated:
 
-1. `data-process.ipynb`: data cleaning and split construction.
-2. `vector-database-*.ipynb`: vector database construction for different retrieval variants.
-3. `reranker.ipynb` / `reranker_all.ipynb`: retrieval, prompt construction, LLM calls, and reranking experiments.
+1. `data-process.ipynb`: optional data cleaning and split construction.
+2. `vector-database-*.ipynb`: optional vector database construction.
+3. `reranker.ipynb`: the single retrieval, prompt-generation, content-reranking, and exact-match evaluation workflow.
 
-Run notebooks from the repository root so that local imports such as `utils`, `database_api_*`, `openai_api`, `deepseek_api`, and `alibaba_api` resolve correctly.
+Run `reranker.ipynb` from the repository root. It imports `database_api_T5_unified.py`, uses Milvus BM25 + CodeT5/L2 + RRF by default, applies one shared time/group filter, and uses `candidate_k` before the final result limit. The notebook keeps the reference-selection score and candidate reranking mechanism from the previous experiments.
 
-Because some notebook cells still contain older generated path names, use the Java quick reproduction as the reference path for the currently committed dataset layout.
+## Unified Retrieval Entry Point
 
-## Retrieval Variants
+| Parameter | Default | Meaning |
+| --- | --- | --- |
+| `mode` | `hybrid` | `sparse_only`, `dense_only`, or `hybrid` |
+| `sparse_metric` | `BM25` | Milvus BM25; `IP` is available only for legacy local BM25 vectors |
+| `dense_metric` | `L2` | CodeT5 dense distance; `COSINE` is also supported |
+| `fusion` | `rrf` | `rrf` or `weighted` |
+| `candidate_k` | `50` | Per-route candidate pool before fusion |
+| `limit` | `5` | Final result count |
 
-| File | Sparse retrieval | Dense retrieval | Fusion/ranking |
-| --- | --- | --- | --- |
-| `database_api_T5_BM25_L2.py` | BM25 | CodeT5 + L2 | RRF |
-| `database_api_T5_BM25_L2_threshold.py` | BM25 | CodeT5 + L2 | RRF + threshold filtering |
-| `database_api_T5_BM25_L2_dense_only.py` | none | CodeT5 + L2 | dense-only |
-| `database_api_T5_IP_COSINE.py` | BM25/IP | CodeT5 + COSINE | WeightedRanker |
-| `database_api_T5_IP_COSINE_dense_only.py` | none | CodeT5 + COSINE | dense-only |
-| `database_api_T5_IP_COSINE_sparse_only.py` | BM25/IP | none | sparse-only |
-| `database_api_CB_IP_COSINE.py` | BM25/IP | CodeBERT + COSINE | WeightedRanker |
-
+Legacy split scripts, CodeBERT retrieval, and duplicate reranker notebooks were removed so that experiments use one implementation and one result schema.
 ## Model Snapshot
 
 The Java quick reproduction fixes CodeT5 to:
