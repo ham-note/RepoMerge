@@ -221,6 +221,19 @@ Run `reranker.ipynb` from the repository root. It imports `database_api_T5_unifi
 | `limit` | `5` | Final result count |
 
 Legacy split scripts, CodeBERT retrieval, and duplicate reranker notebooks were removed so that experiments use one implementation and one result schema.
+
+## Experiment Results
+
+The following figure contains the consolidated experiment results supplied with
+the project. It reports the comparison across retrieval methods, language-model
+settings, historical-data ratios, and reranking configurations.
+
+![Consolidated experiment results](docs/experiment_results.png)
+
+The original machine-readable conflict records are separate from this summary
+figure. The figure is provided for convenient review and reproduction of the
+reported result comparisons.
+
 ## Model Snapshot
 
 The Java quick reproduction fixes CodeT5 to:
