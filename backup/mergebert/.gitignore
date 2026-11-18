@@ -1,0 +1,13 @@
+runtime/
+colab_reference/__pycache__/
+colab_reference/scripts/__pycache__/
+**/__pycache__/
+*.pyc
+.env
+.env.*
+*.pt
+*.bin
+*.safetensors
+*.pkl
+*.pickle
+*.log

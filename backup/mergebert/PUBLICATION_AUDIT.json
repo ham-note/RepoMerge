@@ -1,0 +1,14 @@
+{
+  "scope": "All published backup files, not unrelated upstream repository files or private cloud records",
+  "current_result": {
+    "matches": 549,
+    "total": 1663,
+    "micro_em_pct": 33.01,
+    "macro_em_pct": 33.43,
+    "missing_predictions_counted_as_failures": 72
+  },
+  "unit_tests_passed": 4,
+  "privacy_scan": "No personal paths or credential patterns found; notebook outputs cleared; private samples, predictions and weights excluded.",
+  "limitations": "Pattern scans are not a guarantee against every possible secret. Cloud result is an author-confirmed aggregate, not independently audited per-record evidence.",
+  "published_experiment": "cloud_confirmed_1663_20261114"
+}

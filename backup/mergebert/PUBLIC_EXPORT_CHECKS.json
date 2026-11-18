@@ -1,0 +1,9 @@
+{
+  "automated_tests_passed": 4,
+  "alignment_reference_cases": 254,
+  "real_data_or_models_published": false,
+  "full_training_rerun_for_publication": false,
+  "scope": "Public package checks, including cloud aggregate arithmetic and document tables; not independent verification of private cloud predictions.",
+  "current_cloud_run": "cloud_confirmed_1663_20261114",
+  "published_experiment": "cloud_confirmed_1663_20261114"
+}

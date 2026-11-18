@@ -1,0 +1,13 @@
+[
+  {
+    "uid": "synthetic-001",
+    "repository": "example/synthetic",
+    "raw": {
+      "a_contents": "int answer = 2;",
+      "b_contents": "int answer = 3;",
+      "o_contents": "int answer = 1;",
+      "res_region": "int answer = 3;",
+      "res_label": "synthetic"
+    }
+  }
+]

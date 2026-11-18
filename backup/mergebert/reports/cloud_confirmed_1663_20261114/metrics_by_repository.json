@@ -1,0 +1,104 @@
+{
+  "run_id": "cloud_confirmed_1663_20261114",
+  "source": "author_confirmed_cloud_aggregate",
+  "missing_prediction_policy": "count_as_failure",
+  "independent_per_sample_audit": false,
+  "repositories": [
+    {
+      "repository": "Galacticraft_time20",
+      "matches": 12,
+      "evaluated": 125,
+      "missing": 10,
+      "total": 135,
+      "em_pct": 8.89
+    },
+    {
+      "repository": "SOS_time20",
+      "matches": 9,
+      "evaluated": 154,
+      "missing": 3,
+      "total": 157,
+      "em_pct": 5.73
+    },
+    {
+      "repository": "autopsy_time20",
+      "matches": 28,
+      "evaluated": 123,
+      "missing": 17,
+      "total": 140,
+      "em_pct": 20.0
+    },
+    {
+      "repository": "autorest_time20",
+      "matches": 145,
+      "evaluated": 172,
+      "missing": 0,
+      "total": 172,
+      "em_pct": 84.3
+    },
+    {
+      "repository": "azure_time20",
+      "matches": 94,
+      "evaluated": 178,
+      "missing": 7,
+      "total": 185,
+      "em_pct": 50.81
+    },
+    {
+      "repository": "cloudstack_time20",
+      "matches": 45,
+      "evaluated": 91,
+      "missing": 15,
+      "total": 106,
+      "em_pct": 42.45
+    },
+    {
+      "repository": "molgenis_time20",
+      "matches": 12,
+      "evaluated": 150,
+      "missing": 1,
+      "total": 151,
+      "em_pct": 7.95
+    },
+    {
+      "repository": "orientdb_time20",
+      "matches": 100,
+      "evaluated": 105,
+      "missing": 0,
+      "total": 105,
+      "em_pct": 95.24
+    },
+    {
+      "repository": "rumble_time20",
+      "matches": 74,
+      "evaluated": 275,
+      "missing": 1,
+      "total": 276,
+      "em_pct": 26.81
+    },
+    {
+      "repository": "sis_time20",
+      "matches": 3,
+      "evaluated": 111,
+      "missing": 8,
+      "total": 119,
+      "em_pct": 2.52
+    },
+    {
+      "repository": "spring-boot_time20",
+      "matches": 27,
+      "evaluated": 107,
+      "missing": 10,
+      "total": 117,
+      "em_pct": 23.08
+    }
+  ],
+  "overall": {
+    "matches": 549,
+    "evaluated": 1591,
+    "missing": 72,
+    "total": 1663,
+    "em_pct": 33.01262778111846,
+    "macro_em_pct": 33.43472548500321
+  }
+}

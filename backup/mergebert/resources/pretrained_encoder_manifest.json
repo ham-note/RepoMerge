@@ -1,0 +1,27 @@
+{
+  "config.json": {
+    "bytes": 480,
+    "hash": "c807d42b45f184a2a5eaa545d631318a6dd60c85",
+    "upstream_hash_verified": true
+  },
+  "tokenizer_config.json": {
+    "bytes": 19,
+    "hash": "7072d8c5ec1711e21e191d22976b4454337c5a3d",
+    "upstream_hash_verified": true
+  },
+  "merges.txt": {
+    "bytes": 482532,
+    "hash": "857cd0a6bbe92c0554bec1d7ffc899a9eca03f20",
+    "upstream_hash_verified": true
+  },
+  "vocab.json": {
+    "bytes": 993805,
+    "hash": "7acb8991631161b4e561497a69c4035f146ded80",
+    "upstream_hash_verified": true
+  },
+  "pytorch_model.bin": {
+    "bytes": 336407488,
+    "hash": "3835de5b46b0780d340f5ab2cb63c011d8dc94ccee35667c472bba78dcf8d923",
+    "upstream_hash_verified": true
+  }
+}
