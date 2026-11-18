@@ -28,6 +28,13 @@ Expected Java split in the current repository:
 
 `reproduction-output/java/results/rag_inputs.jsonl` is the hand-off artifact for the LLM stage.
 
+
+## R1-A28 Manual Audit Artifact
+
+`manual_audit/r1_a28/` contains the 100-case manual audit used to analyze exact-agreement false negatives for reviewer comment R1-A28. The sample is repository-stratified with seed `20261003` and audits the top-1 prediction against the developer resolution and original conflict context.
+
+Key result: 23/100 sampled exact-agreement failures are labeled semantically equivalent; 9/100 are benchmark-noise or tangled-fragment cases and are reported separately rather than counted as model-correct.
+
 ## Optional DeepSeek Smoke Test
 
 ```bash
